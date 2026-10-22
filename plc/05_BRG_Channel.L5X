@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="20.01" TargetName="BRG_Channel" TargetType="DataType" ContainsContext="true" ExportDate="Wed Oct 21 18:01:44 2026" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="ScanBridge">
+<DataTypes Use="Context">
+<DataType Use="Target" Name="BRG_Channel" Family="NoFamily" Class="User">
+<Description>
+<![CDATA[One measurement channel (one TBM array) and its CD profiles]]>
+</Description>
+<Members>
+<Member Name="Present" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[1 = TBM array discovered]]>
+</Description>
+</Member>
+<Member Name="SensorSlot" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Sensor[] slot this channel belongs to]]>
+</Description>
+</Member>
+<Member Name="Quality" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Bit field - bit0 = PV valid (see spec)]]>
+</Description>
+</Member>
+<Member Name="PV" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Process variable for PID (RollAvg or ScanAvg per config pv_source)]]>
+</Description>
+</Member>
+<Member Name="Live" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Mean of valid elements of the latest TBM refresh (partial width)]]>
+</Description>
+</Member>
+<Member Name="RollAvg" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Full-width average of the rolling profile - updated every TBM refresh]]>
+</Description>
+</Member>
+<Member Name="Roll2Sigma" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[2 sigma of the rolling profile]]>
+</Description>
+</Member>
+<Member Name="RollMin" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write"></Member>
+<Member Name="RollMax" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write"></Member>
+<Member Name="RollBoxes" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Valid (fresh) boxes in the rolling profile]]>
+</Description>
+</Member>
+<Member Name="ScanAvg" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Average of the last accepted complete scan]]>
+</Description>
+</Member>
+<Member Name="Scan2Sigma" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write"></Member>
+<Member Name="ScanMin" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write"></Member>
+<Member Name="ScanMax" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write"></Member>
+<Member Name="ValidBoxes" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Valid boxes in last scan]]>
+</Description>
+</Member>
+<Member Name="FirstBox" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[First box (1-based) of last scan]]>
+</Description>
+</Member>
+<Member Name="LastBox" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Last box (1-based) of last scan]]>
+</Description>
+</Member>
+<Member Name="Direction" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[+1 / -1 direction of last scan]]>
+</Description>
+</Member>
+<Member Name="Coverage" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Valid / spanned boxes of last scan (0..1)]]>
+</Description>
+</Member>
+<Member Name="ScanTime" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Duration of last scan, s]]>
+</Description>
+</Member>
+<Member Name="ScanEpoch" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Completion time of last scan, Unix s]]>
+</Description>
+</Member>
+<Member Name="Rejected" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Scans rejected for partial/low coverage/span]]>
+</Description>
+</Member>
+<Member Name="Profile" DataType="REAL" Dimension="600" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Last accepted complete-scan profile, box n at index n-1]]>
+</Description>
+</Member>
+<Member Name="LiveProfile" DataType="REAL" Dimension="600" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Rolling profile (latest fresh value per box), updated every TBM refresh]]>
+</Description>
+</Member>
+<Member Name="LiveSeq" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Increments every TBM refresh: Live/Roll*/LiveProfile updated (written last)]]>
+</Description>
+</Member>
+<Member Name="PVSeq" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Increments when PV updates (written last)]]>
+</Description>
+</Member>
+<Member Name="ScanSeq" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Increments when ScanAvg/Profile update (written last)]]>
+</Description>
+</Member>
+</Members>
+</DataType>
+</DataTypes>
+</Controller>
+</RSLogix5000Content>

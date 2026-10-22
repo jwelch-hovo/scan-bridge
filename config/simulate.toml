@@ -1,0 +1,122 @@
+# =============================================================================
+# ScanBridge configuration - ONE FILE PER SCANNER FRAME (e.g. PM8.SP1)
+# Relative paths are relative to THIS file's folder.
+# =============================================================================
+
+[site]
+name = "BENCH-SIM"                     # logs, event-log source, service name suffix
+description = "PM8 frame SP1"
+
+# -----------------------------------------------------------------------------
+[opc]
+node = "192.168.1.117"               # AOS PC (IP / name).  "" or "localhost" = AOS on this PC
+item_prefix = "PM8.SP1"              # MACHINE.FRAME of this frame - run 'scanbridge discover' with
+                                     # item_prefix = "" to list the frames on the server
+prog_id = "AccuRay.Object.Server.1"
+automation_progid = "OPC.Automation.1"
+mode = "events"                      # events | poll (auto-fallback to poll if callbacks are blocked)
+tbm_rate = "5S"                      # 5S (TBM5S arrays, every 5 s) or 1S
+trigger_update_ms = 250
+state_update_ms = 1000
+discovery = "auto"                   # auto = browse on every connect | file = item_map.csv only
+item_map_file = "item_map.csv"       # optional overrides; browse dump -> item_map.discovered.csv
+read_item_properties = false         # item IDs (PM8.SP1.WT1.MEAS.TBM5S) are enough
+init_security = true
+auth_level = 1                       # 1 = NONE, 2 = CONNECT
+impersonation_level = 2              # 2 = IDENTIFY
+simulate = true                      # bench: built-in scanner simulator
+
+# -----------------------------------------------------------------------------
+[plc]
+ip = "192.168.1.10"
+slot = 0
+connection_size = 0                  # 0 auto | 508 for 1756-ENBT | 4002 for EN2T
+to_bridge_tag = "PM8_SP1_ToBridge"   # BRG_ToBridge   (PLC -> bridge)
+from_bridge_tag = "PM8_SP1_FromBridge" # BRG_FromBridge (bridge -> PLC & data collection)
+cmd_poll_ms = 250
+scalar_period_ms = 1000
+full_refresh_s = 60
+write_live_profile = true            # Chan[n].LiveProfile every TBM refresh (for data collection)
+plc_heartbeat_timeout_s = 10
+stale_command_s = 10
+simulate = true                      # bench: in-memory PLC
+
+# -----------------------------------------------------------------------------
+[model]
+profile_len = 600                    # MUST match the generated UDTs
+max_sensors = 8                      # MUST match the generated UDTs
+max_channels = 8                     # MUST match the generated UDTs
+setup_items = 32                     # MUST match the generated UDTs
+pv_source = "rolling"                # rolling = Chan.PV updates every TBM refresh (5 s)
+                                     # scan    = Chan.PV updates once per completed scan
+live_max_age_scans = 2.0             # rolling profile: boxes older than 2 scan times drop out
+min_coverage = 0.80
+min_span = 0.25
+edge_trim_boxes = 0
+invalid_fill = 0.0                   # value written for invalid boxes in Profile / LiveProfile
+stale_s = 0                          # 0 = auto (2.5 x TBM period + 1 s = 13.5 s for 5S)
+stall_s = 30                         # no TBM this long while connected -> reconnect
+
+# -----------------------------------------------------------------------------
+# Pin slots so PLC logic can rely on them (unlisted discoveries get the next free slot, SB-405).
+[[sensor]]
+key = "wt1"          # WT1 basis weight
+slot = 0
+[[sensor]]
+key = "mo1"          # MO1 moisture
+slot = 1
+[[sensor]]
+key = "ca1"          # CA1 caliper (ignored with a warning if not on this frame)
+slot = 2
+[[sensor]]
+key = "ac1"          # AC1 air column
+slot = 3
+
+[[channel]]
+key = "wt1.TBM"
+slot = 0
+scale = 1.0          # PLC value = raw * scale + offset
+offset = 0.0
+eu = "g/m2"
+[[channel]]
+key = "mo1.TBM"
+slot = 1
+eu = "%"
+[[channel]]
+key = "ca1.TBM"
+slot = 2
+[[channel]]
+key = "ac1.TBM"
+slot = 3
+
+# -----------------------------------------------------------------------------
+[commands]
+allow_frame_motion = true
+allow_generic_write = true
+auto_setup_on_connect = false        # true = write ToBridge.Setup[] on every scanner (re)connect
+respect_local_control = true
+timeout_s = 15
+
+[supervisor]
+hang_timeout_s = 120                 # > slow remote DCOM connects
+restart_min_s = 5
+restart_max_s = 120
+thread_watchdog_s = 60
+fatal_exit_on_hung_thread = true
+status_file = "status.json"
+
+[storage]
+db = "data/scanbridge.db"
+history_scans = 500
+audit_days = 90
+
+[logging]
+dir = "logs"
+level = "INFO"
+console = true
+max_mb = 10
+backups = 10
+event_log = true
+
+[discovery_patterns]
+# only needed for non-dotted naming schemes, e.g.  wt = "BW|Basis"

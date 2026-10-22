@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="20.01" TargetName="BRG_Status" TargetType="DataType" ContainsContext="true" ExportDate="Wed Oct 21 18:01:44 2026" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="ScanBridge">
+<DataTypes Use="Context">
+<DataType Use="Target" Name="BRG_Status" Family="NoFamily" Class="User">
+<Description>
+<![CDATA[Bridge health and command handshake]]>
+</Description>
+<Members>
+<Member Name="Heartbeat" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Increments every write cycle (1 s)]]>
+</Description>
+</Member>
+<Member Name="State" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[0 stopped 1 starting 2 connecting 3 discovering 4 running 5 degraded 6 reconnecting]]>
+</Description>
+</Member>
+<Member Name="OPCConnected" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[1 = connected to AccuRay Object Server]]>
+</Description>
+</Member>
+<Member Name="OPCServerState" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[1 RUNNING 2 FAILED 3 NOCONFIG 4 SUSPENDED 5 TEST]]>
+</Description>
+</Member>
+<Member Name="PLCHbOK" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[1 = PLC heartbeat seen within timeout]]>
+</Description>
+</Member>
+<Member Name="CmdAck" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[ReqID of the last completed request]]>
+</Description>
+</Member>
+<Member Name="CmdBusy" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[ReqID currently executing (0 = idle)]]>
+</Description>
+</Member>
+<Member Name="CmdResult" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Result of last request: 1 OK, <0 error]]>
+</Description>
+</Member>
+<Member Name="CmdDetail" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Extra info (failed setup row, ...)]]>
+</Description>
+</Member>
+<Member Name="NeedsSetup" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[1 = scanner (re)connected and setup table not sent since]]>
+</Description>
+</Member>
+<Member Name="TBMRate" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[TBM refresh period in seconds (1 or 5)]]>
+</Description>
+</Member>
+<Member Name="TBMFrames" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[TBM frames accepted (rolls over)]]>
+</Description>
+</Member>
+<Member Name="TBMRejected" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[TBM snapshots rejected]]>
+</Description>
+</Member>
+<Member Name="TBMGaps" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Missed TBM refreshes]]>
+</Description>
+</Member>
+<Member Name="TBMAgeMs" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Age of last TBM frame, ms]]>
+</Description>
+</Member>
+<Member Name="OPCReconnects" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[OPC (re)connections since start]]>
+</Description>
+</Member>
+<Member Name="WorkerRestarts" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[OPC worker process restarts since start]]>
+</Description>
+</Member>
+<Member Name="PLCWriteErrs" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Failed PLC writes since start]]>
+</Description>
+</Member>
+<Member Name="LastError" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Last log message ID number (e.g. 204 for SB-204)]]>
+</Description>
+</Member>
+<Member Name="Version" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Bridge version code]]>
+</Description>
+</Member>
+<Member Name="UptimeS" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Seconds since bridge start]]>
+</Description>
+</Member>
+<Member Name="Epoch" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Bridge PC clock, Unix seconds]]>
+</Description>
+</Member>
+</Members>
+</DataType>
+</DataTypes>
+</Controller>
+</RSLogix5000Content>

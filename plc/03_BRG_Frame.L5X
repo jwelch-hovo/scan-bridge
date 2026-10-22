@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="20.01" TargetName="BRG_Frame" TargetType="DataType" ContainsContext="true" ExportDate="Wed Oct 21 18:01:44 2026" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="ScanBridge">
+<DataTypes Use="Context">
+<DataType Use="Target" Name="BRG_Frame" Family="NoFamily" Class="User">
+<Description>
+<![CDATA[Smart Platform frame state]]>
+</Description>
+<Members>
+<Member Name="Mode" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[0 OffSheet 1 SnglPtReq 2 ScanReq 4 StdzReq 5 SinglePoint 6 Scan 7 AtEOS 8 Standardize 9 Local 10 ReadyToScan]]>
+</Description>
+</Member>
+<Member Name="Scanning" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[1 = Mode 6 or 7]]>
+</Description>
+</Member>
+<Member Name="ScanTime" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Scan period s]]>
+</Description>
+</Member>
+<Member Name="NumBoxes" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Number of data boxes]]>
+</Description>
+</Member>
+<Member Name="DataBoxWidth" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Customer units]]>
+</Description>
+</Member>
+<Member Name="HeadPos" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Last head position from TBM]]>
+</Description>
+</Member>
+<Member Name="Direction" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[+1 forward, -1 reverse, 0 not scanning]]>
+</Description>
+</Member>
+<Member Name="HomeEOS" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write"></Member>
+<Member Name="FarEOS" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write"></Member>
+<Member Name="HomeScanLimit" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write"></Member>
+<Member Name="FarScanLimit" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write"></Member>
+<Member Name="HomeMeasLimit" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write"></Member>
+<Member Name="FarMeasLimit" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write"></Member>
+<Member Name="SnglPtPos" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write"></Member>
+<Member Name="OffSheetPos" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write"></Member>
+<Member Name="ActiveAlarms" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[sp1004 bit field]]>
+</Description>
+</Member>
+<Member Name="SafetyAlarms" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[sp1052 bit field]]>
+</Description>
+</Member>
+<Member Name="DigitalInputs" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[sp1041 (bit0 shutter open, bit2 sheet break, bit7 frame local)]]>
+</Description>
+</Member>
+<Member Name="WorkStnCtrl" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[0 host in control, 1 workstation in control]]>
+</Description>
+</Member>
+<Member Name="AEOSStatus" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[1 enabled]]>
+</Description>
+</Member>
+<Member Name="AEOSError" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[sp1057]]>
+</Description>
+</Member>
+<Member Name="SheetBreak" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Sheet break indicator]]>
+</Description>
+</Member>
+<Member Name="CalSmplStatus" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"></Member>
+<Member Name="StdzEpoch" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Unix s of last completed standardize]]>
+</Description>
+</Member>
+<Member Name="MinSinceStdz" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Minutes since last standardize]]>
+</Description>
+</Member>
+<Member Name="ScanCount" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Completed scans since start]]>
+</Description>
+</Member>
+<Member Name="ConfigArray" DataType="DINT" Dimension="20" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[sp1044 sensor configuration array (raw)]]>
+</Description>
+</Member>
+<Member Name="ChangeSeq" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Increments when any frame value changes (written last)]]>
+</Description>
+</Member>
+</Members>
+</DataType>
+</DataTypes>
+</Controller>
+</RSLogix5000Content>

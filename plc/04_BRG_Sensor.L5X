@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="20.01" TargetName="BRG_Sensor" TargetType="DataType" ContainsContext="true" ExportDate="Wed Oct 21 18:01:44 2026" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="ScanBridge">
+<DataTypes Use="Context">
+<DataType Use="Target" Name="BRG_Sensor" Family="NoFamily" Class="User">
+<Description>
+<![CDATA[One scanner sensor (wt1, mo1 ...)]]>
+</Description>
+<Members>
+<Member Name="Present" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[1 = discovered on the OPC server]]>
+</Description>
+</Member>
+<Member Name="TypeCode" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[1 wt 2 mo 3 mw 4 ca 5 as ... 12 ac (see spec)]]>
+</Description>
+</Member>
+<Member Name="Instance" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Instance x of TTxyyy]]>
+</Description>
+</Member>
+<Member Name="Status" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Raw sensor status word]]>
+</Description>
+</Member>
+<Member Name="StatusBad" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Status AND bad-mask (non-zero = PV not trustworthy)]]>
+</Description>
+</Member>
+<Member Name="Shutter" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[0 n/a, 1 open, 2 closed]]>
+</Description>
+</Member>
+<Member Name="Slope" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Slope read back]]>
+</Description>
+</Member>
+<Member Name="Offset" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Offset read back]]>
+</Description>
+</Member>
+<Member Name="StdzWaitTime" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Minutes before sensor requests standardize]]>
+</Description>
+</Member>
+<Member Name="StdzStatus" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Last standardize status (0 = PASSED)]]>
+</Description>
+</Member>
+<Member Name="StdzEpoch" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Last standardize time, Unix s]]>
+</Description>
+</Member>
+<Member Name="SmplChkStatus" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"></Member>
+<Member Name="SmplChkEpoch" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"></Member>
+<Member Name="CalSmplStatus" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"></Member>
+<Member Name="CalSmplEpoch" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"></Member>
+<Member Name="MaintAlarms" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Maintenance alarm codes as bits (bit n = code 0x40+n)]]>
+</Description>
+</Member>
+<Member Name="ChangeSeq" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Increments on any change (written last)]]>
+</Description>
+</Member>
+</Members>
+</DataType>
+</DataTypes>
+</Controller>
+</RSLogix5000Content>

@@ -1,0 +1,113 @@
+{
+  "state": "running",
+  "opc_connected": true,
+  "needs_setup": true,
+  "tbm_rate_s": 5.0,
+  "tbm_age_s": 2.5,
+  "frame_mode": "Scan",
+  "head_pos": 3547.22,
+  "scan_count": 0,
+  "active_alarms": [],
+  "counters": {
+    "tbm_frames": 25,
+    "tbm_rejected": 0,
+    "tbm_gaps": 0,
+    "opc_reconnects": 1,
+    "worker_restarts": 0,
+    "plc_write_errs": 0,
+    "scans": 0,
+    "last_error": 0
+  },
+  "sensors": {
+    "ac1": {
+      "slot": 3,
+      "present": true,
+      "status": "0x0000",
+      "status_bits": [],
+      "bad": false,
+      "shutter": "n/a"
+    },
+    "ca1": {
+      "slot": 2,
+      "present": true,
+      "status": "0x0000",
+      "status_bits": [],
+      "bad": false,
+      "shutter": "n/a"
+    },
+    "mo1": {
+      "slot": 1,
+      "present": false,
+      "status": "0x0000",
+      "status_bits": [],
+      "bad": false,
+      "shutter": "n/a"
+    },
+    "wt1": {
+      "slot": 0,
+      "present": true,
+      "status": "0x0000",
+      "status_bits": [],
+      "bad": false,
+      "shutter": "open"
+    }
+  },
+  "channels": {
+    "ac1.TBM": {
+      "slot": 3,
+      "present": true,
+      "quality": "0xA3E",
+      "roll_avg": -0.23003593612123618,
+      "roll_boxes": 528,
+      "scan_avg": null,
+      "scan_seq": 0,
+      "scan_age_s": null,
+      "rejected": 7,
+      "aborted": 25
+    },
+    "ca1.TBM": {
+      "slot": 2,
+      "present": true,
+      "quality": "0xA3E",
+      "roll_avg": 1.7289219798915314,
+      "roll_boxes": 528,
+      "scan_avg": null,
+      "scan_seq": 0,
+      "scan_age_s": null,
+      "rejected": 7,
+      "aborted": 25
+    },
+    "mo1.TBM": {
+      "slot": 1,
+      "present": false,
+      "quality": "0x02E",
+      "roll_avg": null,
+      "roll_boxes": 0,
+      "scan_avg": null,
+      "scan_seq": 0,
+      "scan_age_s": null,
+      "rejected": 0,
+      "aborted": 0
+    },
+    "wt1.TBM": {
+      "slot": 0,
+      "present": true,
+      "quality": "0xA3E",
+      "roll_avg": 282.2425796624386,
+      "roll_boxes": 528,
+      "scan_avg": null,
+      "scan_seq": 0,
+      "scan_age_s": null,
+      "rejected": 7,
+      "aborted": 25
+    }
+  },
+  "site": "PM8-SP1",
+  "frame": "PM8.SP1",
+  "time": "2026-10-21 15:44:17",
+  "plc_connected": true,
+  "plc_heartbeat_ok": true,
+  "worker_pid": null,
+  "worker_restarts": 0,
+  "pid": 7556
+}

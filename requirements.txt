@@ -1,0 +1,3 @@
+# 32-bit Python 3.14 on Windows
+pywin32>=306
+pylogix>=1.0

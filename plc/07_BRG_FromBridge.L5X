@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="20.01" TargetName="BRG_FromBridge" TargetType="DataType" ContainsContext="true" ExportDate="Wed Oct 21 18:01:44 2026" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="ScanBridge">
+<DataTypes Use="Context">
+<DataType Use="Target" Name="BRG_FromBridge" Family="NoFamily" Class="User">
+<Description>
+<![CDATA[ScanBridge -> PLC/HMI/data collection. Read only for everyone but the bridge.]]>
+</Description>
+<Members>
+<Member Name="Sts" DataType="BRG_Status" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Bridge status / handshake]]>
+</Description>
+</Member>
+<Member Name="Frame" DataType="BRG_Frame" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Frame state]]>
+</Description>
+</Member>
+<Member Name="Sensor" DataType="BRG_Sensor" Dimension="8" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Sensors by slot]]>
+</Description>
+</Member>
+<Member Name="Chan" DataType="BRG_Channel" Dimension="8" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Measurement channels by slot]]>
+</Description>
+</Member>
+</Members>
+</DataType>
+</DataTypes>
+</Controller>
+</RSLogix5000Content>
